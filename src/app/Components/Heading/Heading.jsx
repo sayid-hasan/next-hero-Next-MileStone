@@ -1,5 +1,11 @@
+import Navbar from "./Navbar/Navbar";
+
 const Heading = () => {
-  return <div>this is heading </div>;
+  return (
+    <>
+      <Navbar></Navbar>
+    </>
+  );
 };
 
 export default Heading;
