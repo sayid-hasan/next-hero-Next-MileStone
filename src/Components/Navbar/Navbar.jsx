@@ -1,17 +1,27 @@
 "use client";
 import { SiWebmoney } from "react-icons/si";
 import "./navbar.css";
-import { Link, animateScroll as scroll } from "react-scroll";
+
 import { FaArrowUpRightFromSquare, FaBarsStaggered } from "react-icons/fa6";
 import { useEffect, useRef, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
-const menu = [{ name: "About" }, { name: "Contact" }, { name: "Testimonial" }];
+const menu = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Contact", path: "/contact" },
+  { name: "Testimonial", path: "/testimonial" },
+];
 
 const Navbar = () => {
+  const pathName = usePathname();
+  const router = useRouter();
   const [showDrawer, setShowDrawer] = useState(false);
+
   const [visible, setVisible] = useState(false);
   const handleScroll = () => {
     const currentScrollPos = window.scrollY;
@@ -50,6 +60,9 @@ const Navbar = () => {
     },
     { scope: container }
   );
+  const handleLogin = () => {
+    router.push("/login");
+  };
 
   return (
     <div>
@@ -88,22 +101,33 @@ const Navbar = () => {
           {menu.map((list, ind) => (
             <Link
               key={ind}
-              activeClass="active"
-              className="tab__item tracking-[2px] duration-50 hover:text-[#8750fd] relative px-3 py-2 font-semibold text-lg md:text-xl cursor-pointer"
-              to={list.name.toLowerCase()}
+              className={`${
+                pathName === list.path ? "active" : ""
+              } tab__item tracking-[2px] duration-50 hover:text-[#8750fd] relative px-3 py-2 font-semibold text-lg md:text-xl cursor-pointer`}
+              href={`${list.path}`}
               spy={true}
               smooth={true}
               offset={-70}
               duration={500}
-              // onClick={() => setShowDrawer(!showDrawer)}
             >
               {list.name}
             </Link>
           ))}
         </div>
         {/* buttons */}
-        <div className={`flex items-center gap-5 md:hidden `}>
-          <button onClick={() => setShowDrawer(!showDrawer)}>
+        <div className={`flex items-center gap-5  `}>
+          <button
+            onClick={handleLogin}
+            className="btn px-8 py-3 rounded-full flex justify-center items-center gap-2  border-none outline-none transition-all duration-1000 bg-gradient-to-tr from-[#1c1405c5] to-[#8750f7] hover:bg-gradient-to-bl"
+          >
+            {" "}
+            login
+            <FaArrowUpRightFromSquare />
+          </button>
+          <button
+            className="md:hidden"
+            onClick={() => setShowDrawer(!showDrawer)}
+          >
             {" "}
             <FaBarsStaggered className="text-2xl cursor-pointer hidden menu"></FaBarsStaggered>
           </button>

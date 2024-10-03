@@ -45,6 +45,9 @@
   cursor: pointer;
   display: none;
 }
+.navbar__container .tab__item.active {
+  color: #8750f7;
+}
 .navbar__container .tab__item.active::after {
   content: "";
   position: absolute;
