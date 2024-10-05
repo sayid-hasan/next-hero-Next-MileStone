@@ -10,20 +10,32 @@ import {
   ListItemSuffix,
   Typography,
 } from "@material-tailwind/react";
+import { useRouter } from "next/navigation";
 import React from "react";
+import { FaBarsStaggered } from "react-icons/fa6";
 
 const DashboardDrawer = () => {
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+  const goHome = () => {
+    router.push("/");
+  };
+
   return (
     <div>
-      <Button onClick={openDrawer}>Open Drawer</Button>
+      <Button color="black" variant="outlined" onClick={openDrawer}>
+        <FaBarsStaggered></FaBarsStaggered>
+      </Button>
       <Drawer open={open} onClose={closeDrawer}>
         <div className="mb-2 flex items-center justify-between p-4">
+          {/* website name */}
           <Typography variant="h5" color="blue-gray">
-            Material Tailwind
+            Next Hero
           </Typography>
+
+          {/* CLOSE BUTTON ON DRAWER */}
           <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +69,7 @@ const DashboardDrawer = () => {
                 />
               </svg>
             </ListItemPrefix>
-            Dashboard
+            Admin pannel
           </ListItem>
           <ListItem>
             <ListItemPrefix>
@@ -74,7 +86,7 @@ const DashboardDrawer = () => {
                 />
               </svg>
             </ListItemPrefix>
-            Analytics
+            Total User
             <ListItemSuffix>
               <Chip
                 value="5"
@@ -133,13 +145,14 @@ const DashboardDrawer = () => {
                 />
               </svg>
             </ListItemPrefix>
-            Tables
+            Add User
           </ListItem>
         </List>
-        <Button className="mt-3 ml-5" size="sm">
-          Documentation
+        <Button onClick={goHome} className="mt-3 ml-5" size="sm">
+          Go to Home
         </Button>
       </Drawer>
+      <h2 className="text-2xl">This is Admin Pannel</h2>
     </div>
   );
 };

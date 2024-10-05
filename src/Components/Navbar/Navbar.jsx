@@ -9,6 +9,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import DashboardDrawer from "../Sidebar/DashboardDrawer";
 
 const menu = [
   { name: "Home", path: "/" },
@@ -64,6 +65,9 @@ const Navbar = () => {
   const handleLogin = () => {
     router.push("/login");
   };
+  if (pathName.includes("/dashboard")) {
+    return <DashboardDrawer></DashboardDrawer>;
+  }
 
   return (
     <div>
