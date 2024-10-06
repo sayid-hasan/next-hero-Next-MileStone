@@ -17,6 +17,7 @@ const menu = [
   { name: "Contact", path: "/contact" },
   { name: "Blogs", path: "/blogs" },
   { name: "Dashboard", path: "/dashboard" },
+  { name: "Categories", path: "/categories" },
 ];
 
 const Navbar = () => {
