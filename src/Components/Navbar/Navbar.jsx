@@ -66,7 +66,7 @@ const Navbar = () => {
   const handleLogin = () => {
     router.push("/login");
   };
-  if (pathName.includes("/dashboard")) {
+  if (pathName.includes("dashboard")) {
     return <DashboardDrawer></DashboardDrawer>;
   }
 

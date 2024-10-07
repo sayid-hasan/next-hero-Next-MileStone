@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 const About = () => {
+  // console.log(name);
   return (
     <div>
       this is about page

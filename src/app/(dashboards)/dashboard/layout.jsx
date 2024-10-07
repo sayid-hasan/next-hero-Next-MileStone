@@ -1,7 +1,7 @@
-import DashboardDrawer from "@/Components/Sidebar/DashboardDrawer";
+import React from "react";
 
-const DashboardLayout = () => {
-  return <div>{/* <DashboardDrawer></DashboardDrawer> */}</div>;
+const DashboardLayout = ({ children }) => {
+  return <main>{children}</main>;
 };
 
 export default DashboardLayout;
