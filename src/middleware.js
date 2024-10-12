@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 
 export const middleware = (request) => {
-  return NextResponse.rewrite(new URL("/dashboard", request.url));
+  if (request.nextUrl.pathname.startsWith("/about")) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
+  }
 };
-export const config = {
-  matcher: ["/about"],
-};
+// export const config = {
+//   matcher: ["/about"],
+// };
